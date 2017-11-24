@@ -1,0 +1,26 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Web
+@model DormitoryManagement.Domain.Room
+
+@{
+    ViewBag.Title = "AllRoomByDorm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+<div class="breadcrumb">
+    抽查管理/房间详情  
+</div> 
+ 
+@using (Html.BeginForm("Index", "Room", FormMethod.Post, new {data_pjax = "", id = FrameworkKeys.FormId}))
+{
+    @Html.InputText("宿舍", Html.TextBox(Keys.Dorm, Model.Dorm.Name, new {disabled = "disabled"}))
+    @Html.InputText("学院", Html.TextBox(Keys.Academy, Model.Academy.Name, new {disabled = "disabled"}))
+    @Html.InputText("名称", Html.TextBox(Keys.Name, Model.Name, new {disabled = "disabled"}))
+    @Html.InputText("最大人数", Html.TextBox(Keys.MaxBedNum, Model.MaxBedNum, new {disabled = "disabled"}))
+    @Html.InputText("实际人数", Html.TextBox("RealCount", Model.Students.Count, new {disabled = "disabled"}))
+    <div class="btn-group" style="left: 10%;">
+        @Html.Backbutton()
+        @Html.ActionLink("成员信息", "Index", "Student", new {/*roomid*/ order6 = Model.Id}, new {@class = "btn btn-default"})
+    </div>
+}

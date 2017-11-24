@@ -1,0 +1,32 @@
+﻿@using MyFramework.Helper
+@using MyFramework.Web
+@model MyFramework.Web.Page.PageList<DormitoryManagement.Domain.Dorm>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+ 
+<div class="breadcrumb">
+    宿舍楼管理/宿舍楼列表
+</div>   
+ 
+
+<div class=" sepH_b ">
+    <div class="col-sm-6">
+        @Html.Backbutton()
+        @Html.CreateButton(Url.Action("Create"))
+    </div>
+</div>
+ 
+@Html.Table(Model,
+    t => t.AutoIndexColumn().Head("序号"),
+    t => t.Column().Head("名称").Data(x => x.Name),
+    t => t.Column().Head("类型").Data(x => x.Type.Text()),
+    t => t.Column().Head("房间数目").Data(x => x.Rooms.Count.ToString()),
+    t => t.Column().Data(x => Html.Button("编辑", Url.Action("Edit", new {id = x.Id}))).Data("|")
+            .Data(x => Html.PostButton("房间详情", Url.Action("Index", "Room", new { DormId = x.Id }))).Data("|")
+        .Data(x => Html.ConfirmButton("删除", Url.Action("Delete", new {id = x.Id}), "删除后将不能找回，你确认删除吗")))
+ 
+@Html.Partial("PageHelper", Model.PageInfo)

@@ -1,0 +1,68 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Application.Interface
+@using MyFramework.Attribute
+@using MyFramework.Domain
+@using MyFramework.Helper
+@using MyFramework.Web
+@using MyFramework.Web.HtmlTags
+@using Roles = DormitoryManagement.Domain.Roles
+@model MyFramework.Domain.Account
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumb">
+    用户管理/编辑 
+     
+</div>
+
+@using (Html.BeginForm("Edit", "User", FormMethod.Post, new {id = FrameworkKeys.FormId, data_pjax = ""}))
+{
+    @Html.Hidden(Keys.Id,Model.Id)
+     foreach (var role in IoC.Get<IFrameworkService>().GetAllRole().Where(x=>x.Name!=FrameworkRole.Root.Value()))
+    {
+        if (Model.Roles.Any(x => x.Id == role.Id))
+        {
+            @Html.InputText(role.Name.To<Roles>().Text(), MvcHtmlString.Create(string.Format("<input type=\"radio\" name=\"Role\" id = {0} checked=\"checked\"/>", role.Id)))
+             
+        }
+
+        else
+        {
+             @Html.InputText(role.Name.To<Roles>().Text(), MvcHtmlString.Create(string.Format("<input type=\"radio\" name=\"Role\" id = {0}  />", role.Id)))
+             
+        }
+       
+    } 
+    @Html.HiddenFor(x => x.Id)
+    @Html.InputText("用户名", Html.TextBox(FrameworkKeys.UserName))
+    @Html.InputText("姓名", Html.TextBox(FrameworkKeys.RealName, Model.RealName))
+    @Html.InputText("Email", Html.TextBox(Keys.Email))
+    @Html.Submit(Html.Button("返回", Url.Action("Index"))) 
+    
+ 
+    
+}
+@Html.FormValidate(FrameworkKeys.FormId,
+    Rule.Tag(FrameworkKeys.UserName).required(),
+    Rule.Tag(FrameworkKeys.RealName).required(),
+
+    Rule.Tag(Keys.Email).required().email())
+<script>
+    $(function () { 
+        $('input[type="radio"]').click(function() {
+            var roleid = $(this).attr('id');
+            var accountid = $('#@Keys.Id').val();
+            if ($(this).is(":checked")) { 
+                $.ajax({
+                    type: "post",
+                    url: "/Admin/User/AddRole",
+                    data: "accountid=" + accountid + "&roleid=" + roleid,
+                    async: false
+                });
+            }  
+        });
+
+    });
+</script>

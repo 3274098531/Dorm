@@ -1,0 +1,41 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Helper
+@using MyFramework.Web
+@model MyFramework.Web.Page.PageList<DormitoryManagement.Domain.Room>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumb">
+    房间管理/房间列表 
+</div>
+@Html.Model("seach", Url.Action("Index"), "开始搜索",
+    Html.InputText("名称", Html.TextBox(Keys.Name)),
+    Html.InputText("学院名称", Html.TextBox(Keys.AcademyName)),
+    Html.InputText("实际人数", Html.TextBox("StudentCount")) )
+<div class=" sepH_b">
+    <div class=" col-sm-6">
+        @Html.Backbutton() 
+        @Html.ModelButton("复杂查询","search")
+    </div>@using (Html.BeginForm("Index", "Room", new {Area = "Admin"}, FormMethod.Post, new {data_pjax = ""}))
+    {
+        @Html.Search(Keys.Name, "请输入宿舍名称 3舍/3舍532/532")
+    }  
+</div>  
+ 
+@Html.Table(Model,
+    t => t.AutoIndexColumn().Head("序号"),
+    t => t.Column().Head("宿舍").Data(x => x.Dorm.Name + x.Name),
+    t => t.Column().Head("宿舍类型").Data(x => x.Dorm.Type.Text()),
+    t => t.Column().Head("所属学院").Data(x => x.Academy.Name),
+    t => t.Column().Head("最大人数").Data(x => x.MaxBedNum.ToString()),
+    t => t.Column().Head("实际人数").Data(x => x.Students.Count.ToString()),
+    t => t.Column().Head("备注").Data(x => x.Remark),
+    t => t.Column().Head("本月卫生检查").Data(x => x.Checks.Count.ToString()),
+    t => t.Column().Head("操作")
+            .Data(x => Html.PostButton("详情", Url.Action("Details", "Room", new { id = x.Id }))).Data("|")
+            .Data(x => Html.PostButton("学生详情", Url.Action("Index", "Student", new { RoomId = x.Id }))).Data("|")
+            .Data(x => Html.PostButton("卫生详情", Url.Action("Index", "CheckDorm", new { RoomId = x.Id }))))
+ 
+@Html.Partial("PageHelper", Model.PageInfo)

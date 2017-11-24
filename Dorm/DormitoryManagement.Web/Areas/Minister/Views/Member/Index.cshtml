@@ -1,0 +1,41 @@
+﻿@using DormitoryManagement.Application
+@using DormitoryManagement.Domain
+@using MyFramework.Attribute
+@using MyFramework.Helper
+@using MyFramework.Web
+@model MyFramework.Web.Page.PageList<DormitoryManagement.Domain.Member>
+
+@{
+     
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+<div class="breadcrumb">
+     成员管理/成员列表
+     
+</div>  
+ <div class=" sepH_b">
+    <div class=" col-sm-6">
+        @Html.Backbutton()  
+        @Html.CreateButton(Url.Action("Create"))
+    </div> 
+     @using (Html.BeginForm("Index", "Member", FormMethod.Post, new {data_pjax = ""}))
+    {
+        @Html.Search(Keys.NameOrCode, "请输入学号或姓名")
+    } 
+ </div>
+@Html.Table(Model,
+    t => t.AutoIndexColumn().Head("序号"),
+    t => t.Column().Head("头像").Data(x => "<img data-action=\"zoom\" style=\"width:30px;height:30px;\" src='" + @Url.Action("GetPhoto", "Account", new {username = x.Code,area=""} ) + "'/>"),
+    t => t.Column().Head("学号").Data(x => x.Code),
+    t => t.Column().Head("姓名").Data(x => x.Student.Name),
+    t => t.Column().Head("学院").Data(x => x.Student.Class.Academy.Name),
+    t => t.Column().Head("班级").Data(x => x.Student.Class.Name),
+    t => t.Column().Head("宿舍").Data(x => x.Student.Room.Dorm.Name+x.Student.Room.Name),
+    t => t.Column().Head("电话").Data(x => x.Phone),
+    t => t.Column().Head("邮箱").Data(x => x.Email),
+    t => t.Column().Head("职务").Data(x => x.Position.Text()),
+    t => t.Column().Data(x => Html.Button("编辑", Url.Action("Edit", new {id = x.Id}))).Data("|")
+        .Data(x => Html.ConfirmButton("删除", Url.Action("Delete", new {id = x.Id}),"删除后将不能找回，你确认删除吗")))
+@Html.Partial("PageHelper", Model.PageInfo)

@@ -1,0 +1,35 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Web
+@using MyFramework.Web.HtmlTags
+@model DormitoryManagement.Domain.Member
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (ViewData.ContainsKey(Keys.Message))
+{
+    @Html.Alert(ViewData[Keys.Message].ToString(), "", AlertCategory.Error)
+}
+<div class="breadcrumb">
+      成员管理/添加  
+ </div>
+ 
+@using (Html.BeginForm("Create", "Member", FormMethod.Post, new {data_pjax="",id = FrameworkKeys.FormId}))
+{ 
+        @Html.InputText("学号", Html.TextBox(Keys.Code)) 
+        @Html.InputText("姓名", Html.TextBox(Keys.Name,"",new{disabled="disabled"}))
+        @Html.InputText("电话", Html.TextBox(Keys.Phone))
+        @Html.InputText("Email", Html.TextBox(Keys.Email))
+        @Html.InputText("职务", Html.DropDownList(Keys.Position, null, "---请选择---"))
+        @Html.Submit(Html.Button("返回", Url.Action("Index"), ButtonClass.Default))
+}<script type="text/javascript"> 
+     getStudentByCode();
+ </script>
+@Html.FormValidate(FrameworkKeys.FormId,
+     Rule.Tag(Keys.Name).required(),
+     Rule.Tag(Keys.Code).required().Add("isStudentCode"),
+     Rule.Tag(Keys.Phone).required(),
+     Rule.Tag(Keys.Email).required(),
+     Rule.Tag(Keys.Position).required())

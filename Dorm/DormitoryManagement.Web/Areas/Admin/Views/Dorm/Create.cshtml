@@ -1,0 +1,21 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Web
+@using MyFramework.Web.HtmlTags
+@model DormitoryManagement.Domain.Dorm
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumb">
+    宿舍楼管理/添加 
+</div>  
+@using (Html.BeginForm("Create", "Dorm", FormMethod.Post, new {data_pjax = "", id = FrameworkKeys.FormId}))
+{
+    @Html.InputText("名称", Html.TextBox(Keys.Name))
+    @Html.InputText("类型", Html.DropDownList(Keys.Type, null, "---请选择---"))
+    @Html.Submit(Html.Button("返回", Url.Action("Index")))
+}@Html.FormValidate(FrameworkKeys.FormId,
+     Rule.Tag(Keys.Dorm).required(),
+     Rule.Tag(Keys.Type).required())

@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D3D88867-B66F-4423-B87A-FE6F283EDD43}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DormitoryManagement.Web</RootNamespace>
+    <AssemblyName>DormitoryManagement.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\MyFramework\package\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <HintPath>..\MyFramework\package\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\MyFramework\package\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqSpecs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MyFramework\package\LinqSpecs.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.JScript" />
+    <Reference Include="NPOI">
+      <HintPath>..\MyFramework\package\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MyFramework\DLL\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe.Entity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MyFramework\DLL\System.Data.SqlServerCe.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MyFramework\package\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AcademyController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DormController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoomController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StudentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClassController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Group\Controllers\AcademyController.cs" />
+    <Compile Include="Areas\Group\Controllers\CheckDormController.cs" />
+    <Compile Include="Areas\Group\Controllers\ClassController.cs" />
+    <Compile Include="Areas\Group\Controllers\DormController.cs" />
+    <Compile Include="Areas\Group\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Group\Controllers\InformationController.cs" />
+    <Compile Include="Areas\Group\Controllers\RoomController.cs" />
+    <Compile Include="Areas\Group\Controllers\StudentController.cs" />
+    <Compile Include="Areas\Group\GroupAreaRegistration.cs" />
+    <Compile Include="Areas\Member\AreaRegistration.cs" />
+    <Compile Include="Areas\Member\Controllers\AcademyController.cs" />
+    <Compile Include="Areas\Member\Controllers\CheckDormController.cs" />
+    <Compile Include="Areas\Member\Controllers\ClassController.cs" />
+    <Compile Include="Areas\Member\Controllers\DormController.cs" />
+    <Compile Include="Areas\Member\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Member\Controllers\InformationController.cs" />
+    <Compile Include="Areas\Member\Controllers\RoomController.cs" />
+    <Compile Include="Areas\Member\Controllers\StudentController.cs" />
+    <Compile Include="Areas\Minister\Controllers\AcademyController.cs" />
+    <Compile Include="Areas\Minister\Controllers\CheckDormController.cs" />
+    <Compile Include="Areas\Minister\Controllers\ClassController.cs" />
+    <Compile Include="Areas\Minister\Controllers\DormController.cs" />
+    <Compile Include="Areas\Minister\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Minister\Controllers\MemberController.cs" />
+    <Compile Include="Areas\Minister\Controllers\RoomController.cs" />
+    <Compile Include="Areas\Minister\Controllers\StudentController.cs" />
+    <Compile Include="Areas\Minister\MinisterAreaRegistration.cs" />
+    <Compile Include="Areas\Root\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Root\Controllers\RequestLogController.cs" />
+    <Compile Include="Areas\Root\RootAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Default\AdminBaseContorller.cs" />
+    <Compile Include="Default\GroupBaseController.cs" />
+    <Compile Include="Controllers\HelpContorller.cs" />
+    <Compile Include="Default\Helps\Helps.cs" />
+    <Compile Include="Default\MenberBaseContorller.cs" />
+    <Compile Include="Default\Menu\MenuHelper.cs" />
+    <Compile Include="Default\MinisterBaseController.cs" />
+    <Compile Include="Default\RootBaseController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BaseFile\卫生检查模版表.txt" />
+    <Content Include="Content\bootstrap\css\style.css" />
+    <Content Include="Content\bootstrap\js\cvi_busy_lib.js" />
+    <Content Include="Content\bootstrap\js\Valid.js" />
+    <Content Include="Content\bootstrap\js\Validextend.js" />
+    <Content Include="Content\build\css\custom.css" />
+    <Content Include="Content\build\css\custom.min.css" />
+    <Content Include="Content\build\iCheck\icheck.js" />
+    <Content Include="Content\build\iCheck\icheck.min.js" />
+    <Content Include="Content\build\iCheck\skins\all.css" />
+    <Content Include="Content\build\iCheck\skins\flat\aero%402x.png" />
+    <Content Include="Content\build\iCheck\skins\flat\aero.css" />
+    <Content Include="Content\build\iCheck\skins\flat\aero.png" />
+    <Content Include="Content\build\iCheck\skins\flat\blue%402x.png" />
+    <Content Include="Content\build\iCheck\skins\flat\blue.css" />
+    <Content Include="Content\build\iCheck\skins\flat\blue.png" />
+    <Content Include="Content\build\iCheck\skins\flat\flat%402x.png" />
+    <Content Include="Content\build\iCheck\skins\flat\flat.css" />
+    <Content Include="Content\build\iCheck\skins\flat\flat.png" />
+    <Content Include="Content\build\iCheck\skins\flat\green%402x.png" />
+    <Content Include="Content\build\iCheck\skins\flat\green.css" />
+    <Content Include="Content\build\iCheck\skins\flat\green.png" />
+    <Content Include="Content\build\iCheck\skins\flat\grey%402x.png" />
+    <Content Include="Content\build\iCheck\skins\flat\grey.css" />
+    <Content Include="Content\build\iCheck\skins\flat\grey.png" />
+    <Content Include="Content\build\iCheck\skins\flat\orange%402x.png" />
+    <Content Include="Content\build\iCheck\skins\flat\orange.css" />
+    <Content Include="Content\build\iCheck\skins\flat\orange.png" />
+    <Content Include="Content\build\iCheck\skins\flat\pink%402x.png" />
+    <Content Include="Content\build\iCheck\skins\flat\pink.css" />
+    <Content Include="Content\build\iCheck\skins\flat\pink.png" />
+    <Content Include="Content\build\iCheck\skins\flat\purple%402x.png" />
+    <Content Include="Content\build\iCheck\skins\flat\purple.css" />
+    <Content Include="Content\build\iCheck\skins\flat\purple.png" />
+    <Content Include="Content\build\iCheck\skins\flat\red%402x.png" />
+    <Content Include="Content\build\iCheck\skins\flat\red.css" />
+    <Content Include="Content\build\iCheck\skins\flat\red.png" />
+    <Content Include="Content\build\iCheck\skins\flat\yellow%402x.png" />
+    <Content Include="Content\build\iCheck\skins\flat\yellow.css" />
+    <Content Include="Content\build\iCheck\skins\flat\yellow.png" />
+    <Content Include="Content\build\iCheck\skins\flat\_all.css" />
+    <Content Include="Content\build\iCheck\skins\futurico\futurico%402x.png" />
+    <Content Include="Content\build\iCheck\skins\futurico\futurico.css" />
+    <Content Include="Content\build\iCheck\skins\futurico\futurico.png" />
+    <Content Include="Content\build\iCheck\skins\line\aero.css" />
+    <Content Include="Content\build\iCheck\skins\line\blue.css" />
+    <Content Include="Content\build\iCheck\skins\line\green.css" />
+    <Content Include="Content\build\iCheck\skins\line\grey.css" />
+    <Content Include="Content\build\iCheck\skins\line\line%402x.png" />
+    <Content Include="Content\build\iCheck\skins\line\line.css" />
+    <Content Include="Content\build\iCheck\skins\line\line.png" />
+    <Content Include="Content\build\iCheck\skins\line\orange.css" />
+    <Content Include="Content\build\iCheck\skins\line\pink.css" />
+    <Content Include="Content\build\iCheck\skins\line\purple.css" />
+    <Content Include="Content\build\iCheck\skins\line\red.css" />
+    <Content Include="Content\build\iCheck\skins\line\yellow.css" />
+    <Content Include="Content\build\iCheck\skins\line\_all.css" />
+    <Content Include="Content\build\iCheck\skins\minimal\aero%402x.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\aero.css" />
+    <Content Include="Content\build\iCheck\skins\minimal\aero.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\blue%402x.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\blue.css" />
+    <Content Include="Content\build\iCheck\skins\minimal\blue.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\green%402x.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\green.css" />
+    <Content Include="Content\build\iCheck\skins\minimal\green.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\grey%402x.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\grey.css" />
+    <Content Include="Content\build\iCheck\skins\minimal\grey.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\minimal%402x.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\minimal.css" />
+    <Content Include="Content\build\iCheck\skins\minimal\minimal.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\orange%402x.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\orange.css" />
+    <Content Include="Content\build\iCheck\skins\minimal\orange.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\pink%402x.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\pink.css" />
+    <Content Include="Content\build\iCheck\skins\minimal\pink.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\purple%402x.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\purple.css" />
+    <Content Include="Content\build\iCheck\skins\minimal\purple.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\red%402x.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\red.css" />
+    <Content Include="Content\build\iCheck\skins\minimal\red.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\yellow%402x.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\yellow.css" />
+    <Content Include="Content\build\iCheck\skins\minimal\yellow.png" />
+    <Content Include="Content\build\iCheck\skins\minimal\_all.css" />
+    <Content Include="Content\build\iCheck\skins\polaris\polaris%402x.png" />
+    <Content Include="Content\build\iCheck\skins\polaris\polaris.css" />
+    <Content Include="Content\build\iCheck\skins\polaris\polaris.png" />
+    <Content Include="Content\build\iCheck\skins\square\aero%402x.png" />
+    <Content Include="Content\build\iCheck\skins\square\aero.css" />
+    <Content Include="Content\build\iCheck\skins\square\aero.png" />
+    <Content Include="Content\build\iCheck\skins\square\blue%402x.png" />
+    <Content Include="Content\build\iCheck\skins\square\blue.css" />
+    <Content Include="Content\build\iCheck\skins\square\blue.png" />
+    <Content Include="Content\build\iCheck\skins\square\green%402x.png" />
+    <Content Include="Content\build\iCheck\skins\square\green.css" />
+    <Content Include="Content\build\iCheck\skins\square\green.png" />
+    <Content Include="Content\build\iCheck\skins\square\grey%402x.png" />
+    <Content Include="Content\build\iCheck\skins\square\grey.css" />
+    <Content Include="Content\build\iCheck\skins\square\grey.png" />
+    <Content Include="Content\build\iCheck\skins\square\orange%402x.png" />
+    <Content Include="Content\build\iCheck\skins\square\orange.css" />
+    <Content Include="Content\build\iCheck\skins\square\orange.png" />
+    <Content Include="Content\build\iCheck\skins\square\pink%402x.png" />
+    <Content Include="Content\build\iCheck\skins\square\pink.css" />
+    <Content Include="Content\build\iCheck\skins\square\pink.png" />
+    <Content Include="Content\build\iCheck\skins\square\purple%402x.png" />
+    <Content Include="Content\build\iCheck\skins\square\purple.css" />
+    <Content Include="Content\build\iCheck\skins\square\purple.png" />
+    <Content Include="Content\build\iCheck\skins\square\red%402x.png" />
+    <Content Include="Content\build\iCheck\skins\square\red.css" />
+    <Content Include="Content\build\iCheck\skins\square\red.png" />
+    <Content Include="Content\build\iCheck\skins\square\square%402x.png" />
+    <Content Include="Content\build\iCheck\skins\square\square.css" />
+    <Content Include="Content\build\iCheck\skins\square\square.png" />
+    <Content Include="Content\build\iCheck\skins\square\yellow%402x.png" />
+    <Content Include="Content\build\iCheck\skins\square\yellow.css" />
+    <Content Include="Content\build\iCheck\skins\square\yellow.png" />
+    <Content Include="Content\build\iCheck\skins\square\_all.css" />
+    <Content Include="Content\build\images\back_disabled.png" />
+    <Content Include="Content\build\images\back_enabled.png" />
+    <Content Include="Content\build\images\back_enabled_hover.png" />
+    <Content Include="Content\build\images\forward_disabled.png" />
+    <Content Include="Content\build\images\forward_enabled.png" />
+    <Content Include="Content\build\images\forward_enabled_hover.png" />
+    <Content Include="Content\build\images\loading.gif" />
+    <Content Include="Content\build\js\custom.js" />
+    <Content Include="Content\build\js\custom.min.js" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\bootstrap\js\npm.js" />
+    <Content Include="Content\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="Content\images\huas.jpg" />
+    <Content Include="Content\images\HUASLogin.png" />
+    <Content Include="Content\images\icon_arrow.png" />
+    <Content Include="Content\images\kfm_home-16.ico" />
+    <Content Include="Content\images\liuwei.JPG" />
+    <Content Include="Content\images\initimg.jpg" />
+    <Content Include="Content\images\1.jpg" />
+    <Content Include="Content\images\login.js" />
+    <Content Include="Content\jquery.datetimepicker.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\pjax\jquery.pjax.js" />
+    <Content Include="Content\pjax\MyPjax.js" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\html5.js" />
+    <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-test.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery.datetimepicker.full.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.pagination.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-1.7.js" />
+    <Content Include="Scripts\MyInput.js" />
+    <Content Include="Scripts\myjs.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Upload\上传文件，勿删除.txt" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Group\Models\" />
+    <Folder Include="Areas\Group\Views\Shared\" />
+    <Folder Include="Areas\Member\Views\Models\" />
+    <Folder Include="Areas\Member\Views\Shared\" />
+    <Folder Include="Areas\Minister\Models\" />
+    <Folder Include="Areas\Root\Models\" />
+    <Folder Include="Areas\Root\Views\Shared\" />
+    <Folder Include="BaseFile\卫生抽查表模板\" />
+    <Folder Include="BaseFile\卫生检查排名表模板\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Menu.cshtml" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Academy\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Academy\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\LogOn.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Academy\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Class\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Class\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Class\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Default\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Room\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Room\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Room\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Dorm\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Dorm\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\User\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Student\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Dorm\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Student\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Student\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Minister\Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Minister\Views\Shared\Menu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Minister\Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Minister\Views\Dorm\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Minister\Views\Room\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Minister\Views\Student\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Minister\Views\Student\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Minister\Views\CheckDorm\CheckIndex.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Minister\Views\CheckDorm\CreateCkeck.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Minister\Views\Room\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Minister\Views\Member\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Minister\Views\Member\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Minister\Views\Member\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Minister\Views\CheckDorm\EditCheck.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Minister\Views\CheckDorm\Details.cshtml" />
+    <Content Include="Areas\Minister\Views\Academy\Index.cshtml" />
+    <Content Include="Areas\Minister\Views\Class\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Student\Details.cshtml" />
+    <Content Include="Areas\Group\Views\Web.config" />
+    <Content Include="Areas\Group\Views\Academy\Index.cshtml" />
+    <Content Include="Areas\Group\Views\CheckDorm\Details.cshtml" />
+    <Content Include="Areas\Group\Views\CheckDorm\CheckIndex.cshtml" />
+    <Content Include="Areas\Group\Views\Class\Index.cshtml" />
+    <Content Include="Areas\Group\Views\Dorm\Index.cshtml" />
+    <Content Include="Areas\Group\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Group\Views\Information\Edit.cshtml" />
+    <Content Include="Areas\Group\Views\Information\Index.cshtml" />
+    <Content Include="Areas\Group\Views\Room\Edit.cshtml" />
+    <Content Include="Areas\Group\Views\Room\Index.cshtml" />
+    <Content Include="Areas\Group\Views\Student\Index.cshtml" />
+    <Content Include="Areas\Member\Views\Web.config" />
+    <Content Include="Areas\Member\Views\Academy\Index.cshtml" />
+    <Content Include="Areas\Member\Views\CheckDorm\Details.cshtml" />
+    <Content Include="Areas\Member\Views\CheckDorm\CheckIndex.cshtml" />
+    <Content Include="Areas\Member\Views\Class\Index.cshtml" />
+    <Content Include="Areas\Member\Views\Dorm\Index.cshtml" />
+    <Content Include="Areas\Member\Views\Student\Edit.cshtml" />
+    <Content Include="Areas\Member\Views\Student\Index.cshtml" />
+    <Content Include="Areas\Member\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Minister\Views\Room\Details.cshtml" />
+    <Content Include="Areas\Member\Views\Room\Details.cshtml" />
+    <Content Include="Areas\Member\Views\Room\Edit.cshtml" />
+    <Content Include="Areas\Member\Views\Room\Index.cshtml" />
+    <Content Include="Areas\Group\Views\Student\Details.cshtml" />
+    <Content Include="Areas\Member\Views\Information\Edit.cshtml" />
+    <Content Include="Areas\Member\Views\Information\Index.cshtml" />
+    <Content Include="Areas\Minister\Views\Room\CheckResults.cshtml" />
+    <Content Include="Areas\Minister\Views\CheckDorm\CheckResults.cshtml" />
+    <Content Include="Areas\Member\Views\Room\CheckResults.cshtml" />
+    <Content Include="Areas\Member\Views\CheckDorm\CheckResults.cshtml" />
+    <Content Include="Areas\Minister\Views\Room\EditAll.cshtml" />
+    <Content Include="Areas\Root\Views\Web.config" />
+    <Content Include="Areas\Root\Views\RequestLog\Index.cshtml" />
+    <Content Include="Areas\Root\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Minister\Views\CheckDorm\Index.cshtml" />
+    <Content Include="Areas\Minister\Views\CheckDorm\Create.cshtml" />
+    <Content Include="Areas\Minister\Views\CheckDorm\Edit.cshtml" />
+    <Content Include="Areas\Member\Views\CheckDorm\Index.cshtml" />
+    <Content Include="Areas\Group\Views\CheckDorm\Index.cshtml" />
+    <None Include="BaseFile\卫生检查反馈表模板\BaseFile.xls" />
+    <None Include="Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Content\build\iCheck\.bower.json" />
+    <None Include="Content\build\iCheck\bower.json" />
+    <None Include="Content\build\iCheck\icheck.jquery.json" />
+    <None Include="Content\font-awesome\.bower.json" />
+    <None Include="Content\font-awesome\.gitignore" />
+    <None Include="Content\font-awesome\.npmignore" />
+    <None Include="Content\font-awesome\bower.json" />
+    <None Include="Content\font-awesome\css\font-awesome.css.map" />
+    <None Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
+    <None Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <None Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
+    <None Include="Content\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="Content\font-awesome\fonts\FontAwesome.otf" />
+    <None Include="Content\font-awesome\less\animated.less" />
+    <None Include="Content\font-awesome\less\bordered-pulled.less" />
+    <None Include="Content\font-awesome\less\core.less" />
+    <None Include="Content\font-awesome\less\fixed-width.less" />
+    <None Include="Content\font-awesome\less\font-awesome.less" />
+    <None Include="Content\font-awesome\less\icons.less" />
+    <None Include="Content\font-awesome\less\larger.less" />
+    <None Include="Content\font-awesome\less\list.less" />
+    <None Include="Content\font-awesome\less\mixins.less" />
+    <None Include="Content\font-awesome\less\path.less" />
+    <None Include="Content\font-awesome\less\rotated-flipped.less" />
+    <None Include="Content\font-awesome\less\screen-reader.less" />
+    <None Include="Content\font-awesome\less\stacked.less" />
+    <None Include="Content\font-awesome\less\variables.less" />
+    <None Include="Content\font-awesome\scss\font-awesome.scss" />
+    <None Include="Content\font-awesome\scss\_animated.scss" />
+    <None Include="Content\font-awesome\scss\_bordered-pulled.scss" />
+    <None Include="Content\font-awesome\scss\_core.scss" />
+    <None Include="Content\font-awesome\scss\_fixed-width.scss" />
+    <None Include="Content\font-awesome\scss\_icons.scss" />
+    <None Include="Content\font-awesome\scss\_larger.scss" />
+    <None Include="Content\font-awesome\scss\_list.scss" />
+    <None Include="Content\font-awesome\scss\_mixins.scss" />
+    <None Include="Content\font-awesome\scss\_path.scss" />
+    <None Include="Content\font-awesome\scss\_rotated-flipped.scss" />
+    <None Include="Content\font-awesome\scss\_screen-reader.scss" />
+    <None Include="Content\font-awesome\scss\_stacked.scss" />
+    <None Include="Content\font-awesome\scss\_variables.scss" />
+    <Content Include="Views\Shared\PageHelper.cshtml" />
+    <Content Include="Views\Account\FindPassWord.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Info.cshtml" />
+    <Content Include="Views\Shared\_Logout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DormitoryManagement\DormitoryManagement.csproj">
+      <Project>{5432E518-204E-431A-90E9-81A8C6F7F082}</Project>
+      <Name>DormitoryManagement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyFramework\MyFramework.csproj">
+      <Project>{87710BD8-1516-4E6D-BBDA-A03F0F3AB0FD}</Project>
+      <Name>MyFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49255</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

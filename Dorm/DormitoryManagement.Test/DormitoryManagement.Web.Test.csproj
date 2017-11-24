@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F1F5673E-10F5-45FD-9590-A40624BB67FB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DormitoryManagement.Test</RootNamespace>
+    <AssemblyName>DormitoryManagement.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\MyFramework\package\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <HintPath>..\MyFramework\package\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\MyFramework\package\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqSpecs">
+      <HintPath>..\MyFramework\package\LinqSpecs.dll</HintPath>
+    </Reference>
+    <Reference Include="Machine.Specifications">
+      <HintPath>..\MyFramework\package\Machine.Specifications.dll</HintPath>
+    </Reference>
+    <Reference Include="Machine.Specifications.Clr4">
+      <HintPath>..\MyFramework\package\Machine.Specifications.Clr4.dll</HintPath>
+    </Reference>
+    <Reference Include="Machine.Specifications.Should">
+      <HintPath>..\MyFramework\package\Machine.Specifications.Should.dll</HintPath>
+    </Reference>
+    <Reference Include="Machine.Specifications.TDNetRunner">
+      <HintPath>..\MyFramework\package\Machine.Specifications.TDNetRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MyFramework\package\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\MyFramework\package\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception">
+      <HintPath>..\MyFramework\package\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\软件\VS软件\插件\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL" />
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\MyFramework\package\Rhino.Mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MyFramework\package\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="测试\作为小组\小组已经登录.cs" />
+    <Compile Include="测试\作为小组\我可以管理个人信息\当修改个人信息时.cs" />
+    <Compile Include="测试\作为小组\我可以管理个人信息\当浏览个人信息时.cs" />
+    <Compile Include="测试\作为小组\我想管理卫生\当浏览卫生检查表时.cs" />
+    <Compile Include="测试\作为小组\我想管理学生\当浏览学生时.cs" />
+    <Compile Include="测试\作为小组\我想管理学生\当浏览学生详情时.cs" />
+    <Compile Include="测试\作为小组\我想管理学院\当浏览学院时.cs" />
+    <Compile Include="测试\作为管理员\我想管理学生\当提交删除学生时.cs" />
+    <Compile Include="测试\作为管理员\我想管理学生\当提交导入学生时.cs" />
+    <Compile Include="测试\作为管理员\我想管理学生\当提交添加学生时.cs" />
+    <Compile Include="测试\作为管理员\我想管理学生\当提交编辑学生时.cs" />
+    <Compile Include="测试\作为管理员\我想管理学生\当浏览学生列表时.cs" />
+    <Compile Include="测试\作为管理员\我想管理学生\当浏览学生详情时.cs" />
+    <Compile Include="测试\作为管理员\我想管理学院\当提交删除学院时.cs" />
+    <Compile Include="测试\作为管理员\我想管理学院\当提交添加学院时.cs" />
+    <Compile Include="测试\作为管理员\我想管理学院\当提交编辑学院时.cs" />
+    <Compile Include="测试\作为管理员\我想管理学院\当浏览学院列表时.cs" />
+    <Compile Include="测试\作为管理员\我想管理宿舍\当我浏览宿舍信息时.cs" />
+    <Compile Include="测试\作为管理员\我想管理宿舍\当提交删除宿舍楼时.cs" />
+    <Compile Include="测试\作为管理员\我想管理宿舍\当提交编辑宿舍楼时.cs" />
+    <Compile Include="测试\作为管理员\我想管理房间\当导入房间时.cs" />
+    <Compile Include="测试\作为管理员\我想管理房间\当提交删除房间时.cs" />
+    <Compile Include="测试\作为管理员\我想管理房间\当提交添加房间时.cs" />
+    <Compile Include="测试\作为管理员\我想管理房间\当提交编辑房间时.cs" />
+    <Compile Include="测试\作为管理员\我想管理房间\当浏览房间列表时.cs" />
+    <Compile Include="测试\作为管理员\我想管理班级\当提交删除班级时.cs" />
+    <Compile Include="测试\作为管理员\我想管理班级\当提交添加班级时.cs" />
+    <Compile Include="测试\作为管理员\我想管理班级\当提交编辑班级时.cs" />
+    <Compile Include="测试\作为管理员\我想管理班级\当浏览班级列表时.cs" />
+    <Compile Include="测试\作为管理员\我想管理宿舍\当我提交添加宿舍时.cs" />
+    <Compile Include="测试\作为部员\我可以管理个人信息\当修改个人信息时.cs" />
+    <Compile Include="测试\作为部员\我想管理卫生\当浏览所有卫生检查列表时.cs" />
+    <Compile Include="测试\作为部员\我想管理学生\当浏览学生列表时.cs" />
+    <Compile Include="测试\作为部员\我可以管理个人信息\当浏览个人信息时.cs" />
+    <Compile Include="测试\作为部员\我想管理学生\当编辑学生信息时.cs" />
+    <Compile Include="测试\作为部员\我想管理学院\当浏览学院列表时.cs" />
+    <Compile Include="测试\作为部员\我想管理宿舍\当浏览宿舍时.cs" />
+    <Compile Include="测试\作为部员\我想管理房间\当浏览房间列表时.cs" />
+    <Compile Include="测试\作为部员\我想管理房间\当浏览房间详情时.cs" />
+    <Compile Include="测试\作为部员\我想管理房间\当编辑房间时.cs" />
+    <Compile Include="测试\作为部员\我想管理班级\当浏览班级列表时.cs" />
+    <Compile Include="测试\作为部长\我想管理学生\当浏览学生列表时.cs" />
+    <Compile Include="测试\作为部长\我想管理学生\当编辑学生时.cs" />
+    <Compile Include="测试\作为部长\我想管理学院\当浏览学院列表时.cs" />
+    <Compile Include="测试\作为部长\我想管理宿舍\当浏览宿舍列表时.cs" />
+    <Compile Include="测试\作为部长\我想管理宿舍卫生\当浏览卫生检查表时.cs" />
+    <Compile Include="测试\作为部长\我想管理宿舍卫生\当添加卫生检查时.cs" />
+    <Compile Include="测试\作为部长\我想管理房间\当批量编辑房间时.cs" />
+    <Compile Include="测试\作为部长\我想管理房间\当浏览房间列表时.cs" />
+    <Compile Include="测试\作为部长\我想管理房间\当浏览房间详情时.cs" />
+    <Compile Include="测试\作为部长\我想管理房间\当编辑房间时.cs" />
+    <Compile Include="测试\作为部长\我想管理班级\当浏览班级列表时.cs" />
+    <Compile Include="测试\作为部长\我想管理部员\当创建部员时.cs" />
+    <Compile Include="测试\作为部长\我想管理部员\当删除部员时.cs" />
+    <Compile Include="测试\作为部长\我想管理部员\当浏览部员时.cs" />
+    <Compile Include="测试\作为部长\我想管理部员\当编辑部员时.cs" />
+    <Compile Include="测试\数据准备工作.cs" />
+    <Compile Include="测试\测试对象.cs" />
+    <Compile Include="测试\作为部员\部员已经登陆.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DormitoryManagement.Web\DormitoryManagement.Web.csproj">
+      <Project>{D3D88867-B66F-4423-B87A-FE6F283EDD43}</Project>
+      <Name>DormitoryManagement.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DormitoryManagement\DormitoryManagement.csproj">
+      <Project>{5432E518-204E-431A-90E9-81A8C6F7F082}</Project>
+      <Name>DormitoryManagement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyFramework\MyFramework.csproj">
+      <Project>{87710BD8-1516-4E6D-BBDA-A03F0F3AB0FD}</Project>
+      <Name>MyFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.3.5">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 3.5 SP2</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="测试\作为小组\我想管理宿舍楼\" />
+    <Folder Include="测试\作为小组\我想管理房间\" />
+    <Folder Include="测试\作为小组\我想管理班级\" />
+    <Folder Include="测试\作为小组\我想管理部员\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

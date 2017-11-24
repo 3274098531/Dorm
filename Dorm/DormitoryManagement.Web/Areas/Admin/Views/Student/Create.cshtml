@@ -1,0 +1,30 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Web
+@model DormitoryManagement.Domain.Student
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Create";
+}
+    
+ 
+<div class="breadcrumb">
+    学生管理/添加 
+</div>
+@using (Html.BeginForm("Create", "Student", FormMethod.Post, new {data_pjac = "", id = FrameworkKeys.FormId}))
+{
+    @Html.InputText("学号", Html.TextBox(Keys.Code  ))
+    @Html.InputText("姓名", Html.TextBox(Keys.Name))
+    @Html.InputText("性别", Html.DropDownList(Keys.Sex, null, "---请选择---"))
+    @Html.InputText("学院", Html.DropDownList(Keys.Academy, null, "---请选择---"))
+    @Html.InputText("班级", Html.DropDownList(Keys.Class, null, "---请选择---"))
+    @Html.InputText("宿舍楼", Html.DropDownList(Keys.Dorm, null, "---请选择---"))
+    @Html.InputText("房间", Html.DropDownList(Keys.Room, null, "---请选择---"))
+    @Html.InputText("违纪情况", Html.TextArea(Keys.Discipline))
+    @Html.Submit(Html.Button("返回", Url.Action("Index")))
+} 
+<script type="text/javascript">
+    SelectClassFormAcademy();
+    SelectRoomFormDorm();
+</script>

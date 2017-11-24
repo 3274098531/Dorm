@@ -1,0 +1,30 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Helper
+@using MyFramework.Web
+@model MyFramework.Web.Page.PageList<DormitoryManagement.Domain.Inspection>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class=" sepH_b">
+    <div class="col-sm-6"> 
+        @Html.CreateButton(Url.Action("Create"))  
+    </div> 
+    @using (Html.BeginForm("Index", "CheckDorm", FormMethod.Post, new {data_pjax = "", name = "search"}))
+    {
+        @Html.Search(Keys.Name, "请输入检查名称")
+    } 
+</div> 
+@Html.Table(Model,
+    t => t.Column().Head("编号").Data(x => x.Code),
+    t => t.Column().Head("名称").Data(x => x.Name),
+    t => t.Column().Head("类型").Data(x => x.Type.Text()),
+    t => t.Column().Head("开始时间").Data(x => x.CheckTime.ToString()),
+    t => t.Column().Head("检查比例").Data(x => x.Ratio.ToString()),
+    t => t.Column().Head("下载").Data(x => Html.ActionLink("学院反馈表", "ExportCheckResultToAcademy", new {name = x.Name})).Data("|")
+        .Data(x => Html.ActionLink("检查反馈表", "ExportCheckResultToCheck", new {name = x.Name})).Data("|")
+        .Data(x => Html.ActionLink("卫生抽查表", "ExportCheck", new {name = x.Name})) ,
+    t => t.Column().Data(x => Html.PostButton("检查详情", Url.Action("CheckIndex", "CheckDorm", new {code = x.Code})))) 
+ 
+@Html.Partial("PageHelper", Model.PageInfo)

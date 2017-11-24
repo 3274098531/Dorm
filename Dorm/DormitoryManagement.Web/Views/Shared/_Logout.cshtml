@@ -1,0 +1,95 @@
+﻿@using MyFramework.Domain
+<!DOCTYPE html>
+<html lang="en" class="login_page">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>湖南文理学院宿舍管理系统</title>
+    
+        <link href=@Url.Content("~/Content/bootstrap/css/bootstrap.min.css")  rel="stylesheet">
+        <link href="@Url.Content("~/Content/bootstrap/css/style.css")" rel="stylesheet" type="text/css" />
+        <script src="@Url.Content("~/Scripts/jquery.min.js?v=1.5")" type="text/javascript"></script>
+        <script src=@Url.Content("~/Content/bootstrap/js/Valid.js?v=1.1")> </script>  
+        <script src=@Url.Content("~/Content/bootstrap/js/Validextend.js")> </script>  
+  <style>
+        body {
+            background: url("/Content/images/huas.jpg");
+            background-position:center; 
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+        } 
+        
+    </style>
+    </head>
+
+    <body>
+        <div></div>
+        <div class="login_box">
+            @RenderBody()
+            <div style="font: italic bold 12px/20px arial, sans-serif; left: 50%; margin-left: -190px; position: absolute; text-align: center; width: 380px;">
+               当前版本：@(ViewData[FrameworkKeys.Version])
+            </div>
+        </div>
+        
+        <script type="text/javascript">
+            $(document).ready(function() {
+
+                //* boxes animation
+                form_wrapper = $('.login_box');
+
+                function boxHeight() {
+                    form_wrapper.animate({ marginTop: (-(form_wrapper.height() / 2) - 24) }, 400);
+                };
+
+                form_wrapper.css({ marginTop: (-(form_wrapper.height() / 2) - 24) });
+                $('.linkform a, .link_reg a').on('click', function(e) {
+                    var target = $(this).attr('href'),
+                        target_height = $(target).actual('height');
+                    $(form_wrapper).css({
+                        'height': form_wrapper.height()
+                    });
+                    $(form_wrapper.find('form:visible')).fadeOut(400, function() {
+                        form_wrapper.stop().animate({
+                            height: target_height,
+                            marginTop: (-(target_height / 2) - 24)
+                        }, 500, function() {
+                            $(target).fadeIn(400);
+                            $('.links_btm .linkform').toggle();
+                            $(form_wrapper).css({
+                                'height': ''
+                            });
+                        });
+                    });
+                    e.preventDefault();
+                });
+
+                //* validation
+                $('#login_form').validate({
+                    onkeyup: false,
+                    errorClass: 'error',
+                    validClass: 'valid',
+                    rules: {
+                        username: { required: true, minlength: 3 },
+                        password: { required: true, minlength: 3 }
+                    },
+                    highlight: function(element) {
+                        $(element).closest('.form-group').addClass("f_error");
+                        setTimeout(function() {
+                            boxHeight();
+                        }, 200);
+                    },
+                    unhighlight: function(element) {
+                        $(element).closest('.form-group').removeClass("f_error");
+                        setTimeout(function() {
+                            boxHeight();
+                        }, 200);
+                    },
+                    errorPlacement: function(error, element) {
+                        $(element).closest('.form-group').append(error);
+                    }
+                });
+            });
+        </script>
+			
+    </body>
+</html>

@@ -1,0 +1,26 @@
+﻿@using MyFramework.Web
+@model MyFramework.Web.Page.PageList<DormitoryManagement.Domain.Academy>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+} 
+<div class="breadcrumb">
+     学院管理/学院列表   
+</div> 
+ <div class=" sepH_b">
+    <div class=" col-sm-6">
+        @Html.Backbutton()  
+    </div>  
+</div>    
+@Html.Table(Model,
+    t => t.AutoIndexColumn().Head("序号"),
+    t => t.Column().Head("名称").Data(x => x.Name),
+    t => t.Column().Head("简称").Data(x => x.ShortName),
+    t => t.Column().Head("班级数").Data(x => x.Classes.Count.ToString()),
+    t => t.Column().Head("房间数").Data(x => x.Rooms.Count.ToString()),
+    t => t.Column() 
+            .Data(x => Html.PostButton("班级详情", Url.Action("Index", "Class", new { AcademyId = x.Id }))).Data("|")
+            .Data(x => Html.PostButton("房间详情", Url.Action("Index", "Room", new { AcademyId = x.Id }))))
+ 
+@Html.Partial("PageHelper", Model.PageInfo)

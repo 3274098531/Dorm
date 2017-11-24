@@ -1,0 +1,43 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Helper
+@using MyFramework.Web
+@model MyFramework.Web.Page.PageList<DormitoryManagement.Domain.Room>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+}
+  
+ 
+<div class="breadcrumb">
+    房间管理/房间列表
+</div>  
+@Html.Model("search", Url.Action("Index"), "开始搜索",
+    Html.InputText("名称", Html.TextBox(Keys.Name)),
+    Html.InputText("学院名称", Html.TextBox(Keys.AcademyName)),
+    Html.InputText("实际人数", Html.TextBox("StudentCount")) )
+<div class=" sepH_b">
+    <div class=" col-sm-6">
+        @Html.Backbutton()
+        @Html.CreateButton(Url.Action("Create")) 
+        @Html.File("批量导入", Url.Action("InputFile"))
+        @Html.ModelButton("复杂查询","search")
+    </div> 
+    @using (Html.BeginForm("Index", "Room", new {Area = "Admin"}, FormMethod.Post, new {data_pjax = ""}))
+    {
+        @Html.Search(Keys.Name, "请输入宿舍名称 3舍/3舍532/532")
+    }
+</div>
+ 
+@Html.Table(Model,
+    t => t.AutoIndexColumn().Head("序号"),
+    t => t.Column().Head("宿舍").Data(x => x.Dorm.Name + x.Name),
+    t => t.Column().Head("宿舍类型").Data(x => x.Dorm.Type.Text()),
+    t => t.Column().Head("所属学院").Data(x => x.Academy.Name),
+    t => t.Column().Head("最大人数").Data(x => x.MaxBedNum.ToString()),
+    t => t.Column().Head("实际人数").Data(x => x.Students.Count.ToString()),
+    t => t.Column().Head("操作").Data(x => Html.Button("编辑", Url.Action("Edit","Room", new {id = x.Id}))).Data("|")
+            .Data(x => Html.PostButton("宿舍人员 ", Url.Action("Index", "Student", new { RoomId = x.Id }))).Data("|")
+        .Data(x => Html.ConfirmButton("删除", Url.Action("Delete", new {id = x.Id}), "删除后将不能找回，你确认删除吗")))
+@Html.Partial("PageHelper", Model.PageInfo)
+ 

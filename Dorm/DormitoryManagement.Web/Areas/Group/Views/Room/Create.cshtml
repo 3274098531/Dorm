@@ -1,0 +1,58 @@
+﻿@using System.IdentityModel.Selectors
+@using DormitoryManagement.Domain
+@model DormitoryManagement.Domain.Room
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Menber/Views/Shared/Menu.cshtml";
+}
+ 
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Room</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Academy.Name)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList(Keys.Academy)
+            @Html.ValidationMessageFor(model => model.Academy.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Dorm.Name)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList(Keys.Dorm)
+            @Html.ValidationMessageFor(model => model.DormId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MaxBedNum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MaxBedNum)
+            @Html.ValidationMessageFor(model => model.MaxBedNum)
+        </div>
+
+        
+
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

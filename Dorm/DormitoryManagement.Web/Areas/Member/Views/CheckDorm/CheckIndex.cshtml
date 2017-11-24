@@ -1,0 +1,42 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Helper
+@using MyFramework.Web
+@model IList<DormitoryManagement.Domain.Check>
+
+@{
+    var InspectionId = Model.FirstOrDefault() == null ? "" : Model.First().InspectionId.ToString();
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+<div class="breadcrumb">
+    卫生检查管理/检查列表 
+</div> 
+ 
+@Html.Model("search", Url.Action("CheckIndex"), "开始搜索",
+    Html.Hidden(Keys.InspectionId,InspectionId), 
+    Html.InputText("学院名称", Html.TextBox(Keys.AcademyName)),
+    Html.InputText("宿舍名称", Html.TextBox(Keys.DormName)))
+<div class=" sepH_b">
+    <div class="col-sm-6"> 
+        @Html.Backbutton()
+        @Html.ModelButton("复杂查询", "search") 
+    </div> 
+    @using (Html.BeginForm("CheckIndex", "CheckDorm", FormMethod.Post, new {data_pjax = "", name = "search"}))
+    {
+        @Html.Hidden(Keys.InspectionId,InspectionId)
+        @Html.Search(Keys.DormName, "请输入检查名称")
+    } 
+</div> 
+  
+@Html.Table(Model,
+    t => t.AutoIndexColumn().Head("序号"),
+    t => t.Column().Head("名称").Data(x => x.Inspection.Name),
+    t => t.Column().Head("宿舍").Data(x => x.Room.Dorm.Name + x.Room.Name),
+    t => t.Column().Head("所属学院").Data(x => x.Room.Academy.Name),
+    t => t.Column().Head("开始时间").Data(x => x.Inspection.CheckTime.ToString()),
+    t => t.Column().Head("检查结果").Data(x => x.Result.Text()),
+    t => t.Column().Head("操作").Data(x => Html.PostButton("房间详情", Url.Action("Details", "CheckDorm", new {id = x.Room.Id}))).Data("|")
+        .Data(x => Html.Button("检查记录", Url.Action("CheckResults", new {id = x.RoomId})))) 
+ 
+ 

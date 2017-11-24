@@ -1,0 +1,35 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Web
+@model DormitoryManagement.Domain.Room
+
+@{
+    ViewBag.Title = "EditAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li class="active">房间管理/批量编辑
+    </li>
+</ol> 
+@using (Html.BeginForm("EditAll", "Room", FormMethod.Post, new {data_pjax="",id = FrameworkKeys.FormId}))
+{
+    @Html.InputText("宿舍", Html.DropDownList(Keys.Dorm, null, "---请选择---"))
+    @Html.InputText("开始时间", Html.TextBox(Keys.StartTime), "glyphicon glyphicon-calendar form-control-feedback")
+    @Html.InputText("结束时间", Html.TextBox(Keys.EndTime), "glyphicon glyphicon-calendar form-control-feedback")
+    @Html.InputText("备注", Html.TextBox(Keys.Remark)) 
+    @Html.InputText("房间", Html.TextArea(Keys.Room, new {style = "font-size:20px;height:200px;width:800px;", placeholder = "提交前请先选择宿舍  然后输入房间号 用 ,或， 隔开 如(531,532)"}))
+    @Html.Submit(Html.Button("返回", Url.Action("Index")))
+} 
+<script>
+    $(function() {
+        $('#StartTime').datetimepicker({ lang: 'ch' });
+        $('#EndTime').datetimepicker({ lang: 'ch' });
+        if (!$("#AbleCheck").is(':checked')) {
+            $('#ablecheck').show();
+        } else {
+            $('#ablecheck').hide();
+        }
+    });
+
+</script>

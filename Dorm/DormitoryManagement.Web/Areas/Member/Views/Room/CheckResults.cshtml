@@ -1,0 +1,25 @@
+﻿@using MyFramework.Helper
+@using MyFramework.Web
+@model IEnumerable<DormitoryManagement.Domain.CheckResult>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="active">房间管理/房间检查结果列表
+    </li>
+</ol>
+<div class="form-inline"> 
+    <div class="btn-group"> 
+        @Html.Backbutton() 
+    </div>
+</div> 
+<div class="table-responsive">
+    @Html.Table(Model,
+        t => t.AutoIndexColumn().Head("序号"),
+       t => t.Column().Head("宿舍").Data(x => x.Room.Dorm.Name + x.Room.Name),
+        t => t.Column().Head("检查时间").Data(x => x.CheckTime.ToString()),
+        t => t.Column().Head("检查结果").Data(x => x.Grade.Text())
+        )
+</div>

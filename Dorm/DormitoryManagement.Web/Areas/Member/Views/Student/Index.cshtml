@@ -1,0 +1,39 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Helper
+@using MyFramework.Web
+@model MyFramework.Web.Page.PageList<DormitoryManagement.Domain.Student>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumb">
+    学生管理/学生列表
+</div>  
+@Html.Model("seach", Url.Action("Index"), "开始搜索",
+    Html.InputText("学号", Html.TextBox(Keys.Code)),
+    Html.InputText("姓名", Html.TextBox(Keys.Name)),
+    Html.InputText("班级名称", Html.TextBox(Keys.ClassName)),
+    Html.InputText("学院名称", Html.TextBox(Keys.AcademyName)),
+    Html.InputText("宿舍名称", Html.TextBox("DormName")))
+<div class=" sepH_b">
+    <div class=" col-sm-6">
+        @Html.Backbutton()  
+        @Html.ModelButton("复杂查询", "search")
+    </div> 
+     @using (Html.BeginForm("Index", "Student",  FormMethod.Post, new {data_pjax = ""}))
+            {
+                @Html.Search(Keys.NameOrCode, "请输入学生姓名或学号")
+            }
+</div> 
+@Html.Table(Model,
+    t => t.AutoIndexColumn().Head("序号"),
+    t => t.Column().Head("学号").Data(x => x.Code),
+    t => t.Column().Head("姓名").Data(x => x.Name),
+    t => t.Column().Head("性别").Data(x => x.Sex.Text()),
+    t => t.Column().Head("学院").Data(x => x.Class.Academy.Name),
+    t => t.Column().Head("班级").Data(x => x.Class.Name),
+    t => t.Column().Head("宿舍").Data(x => x.Room.Dorm.Name + x.Room.Name),
+    t => t.Column().Head("是否违纪").Data(x => x.Discipline),
+    t => t.Column().Data(x => Html.Button("编辑", Url.Action("Edit", "Student", new {id = x.Id})))) 
+@Html.Partial("PageHelper", Model.PageInfo)

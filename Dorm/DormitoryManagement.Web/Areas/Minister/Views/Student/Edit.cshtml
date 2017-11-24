@@ -1,0 +1,27 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Web
+@model DormitoryManagement.Domain.Student
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumb">
+    学生管理/编辑  
+</div>
+@using (Html.BeginForm("Edit", "Student", FormMethod.Post, new {data_pjax = "", id = FrameworkKeys.FormId}))
+{
+    @Html.InputText("学号", Html.TextBox(FrameworkKeys.UserName, Model.Code, new {disabled = "disabled"}))
+    @Html.InputText("姓名", Html.TextBox(Keys.Name, Model.Name,new {disabled = "disabled"}))
+    @Html.InputText("性别", Html.TextBox(Keys.Sex, Model.Sex,new {disabled = "disabled"}))
+    @Html.InputText("学院", Html.TextBox(Keys.Academy, Model.Class.Academy.Name,new {disabled = "disabled"}))
+    @Html.InputText("班级", Html.TextBox(Keys.Class, Model.Class.Name,new {disabled = "disabled"}))
+    @Html.InputText("宿舍楼", Html.DropDownList(Keys.Dorm, ViewData[Keys.Dorm] as SelectList, Model.Room.Dorm.Name))
+    @Html.InputText("房间", Html.DropDownList(Keys.Room, ViewData[Keys.Room] as SelectList, Model.Room.Name))
+    @Html.InputText("违纪情况", Html.TextBox(Keys.Discipline, Model.Discipline))
+    @Html.Submit(Html.Button("返回", Url.Action("Index")))
+}
+<script type="text/javascript">
+    SelectRoomFormDorm();
+</script>

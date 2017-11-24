@@ -1,0 +1,90 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Web
+@model DormitoryManagement.Domain.Room
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb">
+    房间管理/编辑   
+</div> 
+@using (Html.BeginForm("Edit", "Room", FormMethod.Post, new {data_pjax="",id = FrameworkKeys.FormId}))
+{
+    @Html.InputText("宿舍", Html.TextBox(Keys.Dorm, Model.Dorm.Name, new {disabled = "disabled"}))
+    @Html.InputText("学院", Html.TextBox(Keys.Academy, Model.Academy.Name, new {disabled = "disabled"}))
+
+    @Html.InputText("名称", Html.TextBox(Keys.Name, Model.Name))
+    @Html.InputText("最大人数", Html.TextBox(Keys.MaxBedNum, Model.MaxBedNum))
+    @Html.InputText("能否检查", Html.CheckBox(Keys.AbleCheck, Model.GetIsAbleCheck()))
+
+    <div style="display: none" id="ablecheck">
+        @Html.InputText("开始时间", Html.TextBox(Keys.StartTime, Model.StartTime), "glyphicon glyphicon-calendar form-control-feedback")
+        @Html.InputText("结束时间", Html.TextBox(Keys.EndTime, Model.EndTime), "glyphicon glyphicon-calendar form-control-feedback")
+        @Html.InputText("备注:", Html.TextArea(Keys.Remark, Model.Remark))
+    </div>
+    @Html.Submit(Html.Button("返回", Url.Action("Index")))
+}  
+
+
+
+<script type="text/javascript">
+
+    $('#StartTime').datetimepicker({ lang: 'ch' });
+    $('#EndTime').datetimepicker({ lang: 'ch' });
+    if ($("#AbleCheck").is(':checked')) {
+
+        $("#ablecheck").slideUp();
+    } else {
+        $("#ablecheck").fadeIn();
+    }
+    $("#AbleCheck").click(function() {
+        if ($(this).is(':checked')) {
+
+            $("#ablecheck").slideUp();
+        } else {
+            $("#ablecheck").fadeIn();
+        }
+    });
+    $('#Submit').click(function() {
+        if ($('#AbleCheck').is(':checked')) {
+            $('#@FrameworkKeys.FormId').submit();
+        } else {
+            var label;
+            if ($('#StartTime').val() == "1753/1/1 12:00:00") {
+                $("#StartTime").parents('.form-group').attr('class', "form-group has-error");
+                label = $("#StartTime").parents('.form-group').children('label');
+                label.text('请选择开始时间');
+                return false;
+            } else {
+                $("#StartTime").parents('.form-group').attr('class', "form-group has-success");
+                label = $("#StartTime").parents('.form-group').children('label');
+                label.text('开始时间');
+            }
+
+            if ($('#EndTime').val() == "1753/1/1 12:00:00") {
+                $("#EndTime").parents('.form-group').attr('class', "form-group has-error");
+                label = $("#EndTime").parents('.form-group').children('label');
+                label.text('请选择结束时间');
+                return false;
+            } else {
+                $("#EndTime").parents('.form-group').attr('class', "form-group has-success");
+                label = $("#EndTime").parents('.form-group').children('label');
+                label.text('结束时间');
+            }
+            if ($('#Remark').val().length == 0) {
+                $("#Remark").parents('.form-group').attr('class', "form-group has-error");
+                label = $("#Remark").parents('.form-group').children('label');
+                label.text('请输入备注');
+                return false;
+            } else {
+                $("#Remark").parents('.form-group').attr('class', "form-group has-success");
+                label = $("#Remark").parents('.form-group').children('label');
+                label.text('备注');
+            }
+            $('#editroomform').submit();
+        }
+    });
+</script>

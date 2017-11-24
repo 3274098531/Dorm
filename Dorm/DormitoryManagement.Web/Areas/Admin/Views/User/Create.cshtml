@@ -1,0 +1,27 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Web
+@using MyFramework.Web.HtmlTags
+@model MyFramework.Domain.Account
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumb">
+    用户管理/添加 
+     
+</div> 
+@using (Html.BeginForm("Create", "User", FormMethod.Post, new {data_pjax = "", id = FrameworkKeys.FormId}))
+{
+    @Html.InputText("用户名", Html.TextBox(FrameworkKeys.UserName))
+    @Html.InputText("姓名", Html.TextBox(FrameworkKeys.RealName))
+    @Html.InputText("权限", Html.DropDownList(Keys.Role, null, "---请选择---"))
+    @Html.InputText("Email", Html.TextBox(Keys.Email))
+    @Html.Submit(Html.Button("返回", Url.Action("Index")))
+} 
+@Html.FormValidate(FrameworkKeys.FormId,
+    Rule.Tag(FrameworkKeys.UserName).required(),
+    Rule.Tag(FrameworkKeys.RealName).required(),
+    Rule.Tag(Keys.Role).required(),
+    Rule.Tag(Keys.Email).required().email())

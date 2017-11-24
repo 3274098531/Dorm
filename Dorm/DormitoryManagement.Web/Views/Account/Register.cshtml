@@ -1,0 +1,68 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@{
+    Layout = "~/Views/Shared/_Logout.cshtml";
+}
+ 
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new {id = "Register_form"}))
+{
+    <div class="top_b">
+        注册新用户</div>
+    if (ViewData.ContainsKey(FrameworkKeys.Notification))
+    {
+        if (!ViewData[FrameworkKeys.Notification].ToString().Contains("注册成功"))
+        {
+            <div class="alert alert-danger" >
+                @ViewData[Keys.Notification]
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success">
+                @ViewData[FrameworkKeys.Notification]@Html.ActionLink("返回", "LogOn")
+            </div>
+        }
+    }
+    <div class="cnt_b">
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon input-sm">
+                    <i class="glyphicon glyphicon-user"></i>
+                </span>
+                @Html.TextBox(FrameworkKeys.UserName, "", new {placeholder = "请输入用户名", @class = "form-control input-sm"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon input-sm">
+                    <i class="glyphicon glyphicon-lock"></i>
+                </span>
+                @Html.Password(FrameworkKeys.Password, "", new {placeholder = "请输入密码", @class = "form-control input-sm"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon input-sm">
+                    <i class="glyphicon glyphicon-lock"></i>
+                </span>
+                @Html.Password(FrameworkKeys.ConfirmPassWord, "", new {placeholder = "请再次输入密码", @class = "form-control input-sm"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon input-sm">
+                    <i class="glyphicon glyphicon-envelope"></i>
+                </span>
+                @Html.TextBox(FrameworkKeys.Email, "", new {placeholder = "请输入邮箱", @class = "form-control input-sm"})
+            </div>
+        </div>
+    </div>
+    <div class="btm_b clearfix">
+        <button class="btn btn-primary pull-right" type="submit" id="register-button">
+            注 册</button>
+        <span class="link_reg ">
+                         
+            @Html.ActionLink("返回登录页面", "LogOn")
+        </span>
+    </div>
+}

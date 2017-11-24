@@ -1,0 +1,43 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Web
+@model DormitoryManagement.Domain.Room
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb">
+    房间管理/编辑 
+</div> 
+@using (Html.BeginForm("Edit", "Room", FormMethod.Post, new {data_pjax = "", id = FrameworkKeys.FormId}))
+{
+    @Html.InputText("宿舍", Html.TextBox(Keys.Dorm, Model.Dorm.Name, new {disabled = "disabled"}))
+    @Html.InputText("学院", Html.TextBox(Keys.Academy, Model.Academy.Name, new {disabled = "disabled"}))
+    @Html.InputText("名称", Html.TextBox(Keys.Name, Model.Name, new {disabled = "disabled"}))
+    @Html.InputText("最大人数", Html.TextBoxFor(x => x.MaxBedNum, new {disabled = "disabled"}))
+    @Html.InputText("实际人数", Html.TextBox("RealCount", Model.Students.Count, new {disabled = "disabled"}))
+    @Html.InputText("能否检查", Html.CheckBox(Keys.AbleCheck, Model.GetIsAbleCheck(), new {disabled = "disabled"}))
+    <div style="display: none" id="ablecheck">
+        @Html.InputText("开始时间", Html.TextBox(Keys.StartTime, Model.StartTime, new {disabled = "disabled"}), "glyphicon glyphicon-calendar form-control-feedback")
+        @Html.InputText("开始时间", Html.TextBox(Keys.EndTime, Model.EndTime, new {disabled = "disabled"}), "glyphicon glyphicon-calendar form-control-feedback")
+        @Html.InputText("备注:", Html.TextArea(Keys.Remark, Model.Remark, new {disabled = "disabled"}))
+    </div>
+    <div class="btn-group" style="margin-left: 20%;"> 
+        @Html.Backbutton()
+        @Html.Button("编辑", Url.Action("Edit", new {id = Model.Id}),ButtonClass.Default)
+        @Html.Button("检查记录", Url.Action("CheckResults", new {id = Model.Id}) ,ButtonClass.Default)
+        @Html.PostButton("成员信息", Url.Action("Index", "Student", new {RoomId = Model.Id }), ButtonClass.Default)
+           
+    </div>
+} 
+<script>
+    $(function() {
+        if (!$("#AbleCheck").is(':checked')) {
+            $('#ablecheck').show();
+        } else {
+            $('#ablecheck').hide();
+        }
+    });
+</script>

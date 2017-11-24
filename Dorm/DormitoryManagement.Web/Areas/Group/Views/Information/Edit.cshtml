@@ -1,0 +1,24 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Helper
+@using MyFramework.Web
+@model DormitoryManagement.Domain.Member
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumb">
+    个人信息管理/编辑  
+</div>
+ 
+@using (Html.BeginForm("Edit", "Information", FormMethod.Post, new {data_pjax = "", id = FrameworkKeys.FormId}))
+{
+    @Html.InputText("学号", Html.TextBox(Keys.Code, Model.Code, new {disabled = "disabled"}))
+    @Html.InputText("姓名", Html.TextBox(Keys.Name, Model.Student.Name, new {disabled = "disabled"}))
+    @Html.InputText("部门名称", Html.TextBox(Keys.Union, Model.Union.Name, new {disabled = "disabled"}))
+    @Html.InputText("电话", Html.TextBox(Keys.Phone, Model.Phone))
+    @Html.InputText("Email", Html.TextBox(Keys.Email, Model.Email))
+    @Html.InputText("职务", Html.TextBox(Keys.Position, Model.Position.Text()))
+    @Html.Submit()
+}

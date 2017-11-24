@@ -1,0 +1,29 @@
+﻿table th, td { text-align: center; }
+
+.table thead th { background-color: #f0f3f5 !important; }
+
+.breadcrumb { font-size: 20px; }
+
+#loding {
+    background: rgba(0, 0, 0, 0.44);
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+#lodingShow {
+    display: none;
+    height: 100px;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -150px;
+    position: fixed;
+    top: 50%;
+    width: 300px;
+    z-index: 2;
+}
+ 

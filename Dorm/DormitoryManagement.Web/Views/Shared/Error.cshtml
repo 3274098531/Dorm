@@ -1,0 +1,25 @@
+﻿@using MyFramework.Domain
+@using MyFramework.Web
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href=@Url.Content("~/Content/bootstrap/css/bootstrap.min.css")  rel="stylesheet"> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>错误</title>
+    </head>
+    <body>
+        <div class="main_content" id="main_content">
+            @Html.Backbutton()
+            <h5>
+                
+                @Html.Alert(@ViewData[FrameworkKeys.ErrorMessage].ToString(), "", AlertCategory.Error)
+            </h5>
+            <p>
+                错误跟踪：@ViewData[FrameworkKeys.ErrorStackTrace]
+            </p>
+        </div>
+    </body>
+</html>

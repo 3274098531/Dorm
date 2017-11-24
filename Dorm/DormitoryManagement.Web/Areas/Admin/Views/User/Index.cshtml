@@ -1,0 +1,38 @@
+﻿@using MyFramework.Application.Interface
+@using MyFramework.Attribute
+@using MyFramework.Helper
+@using MyFramework.Web
+@using Roles = DormitoryManagement.Domain.Roles
+@model MyFramework.Web.Page.PageList<MyFramework.Domain.Account>
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+} 
+<div class="breadcrumb">
+    用户管理/用户列表
+     
+</div>  
+<div class=" sepH_b">
+    <div class="col-sm-6">
+        @Html.Backbutton()
+        @Html.CreateButton(Url.Action("Create"))
+    </div>
+</div>
+@Html.Table(Model ,
+    t => t.AutoIndexColumn().Head("序号"),
+    t => t.Column().Head("用户名").Data(x => x.UserName),
+    t => t.Column().Head("姓名").Data(x => x.RealName),
+    t => t.Column().Head("权限").Data(x => string.Join(",", x.Roles.OrderBy(z=>z.Grade).Select(z => z.Name.To<Roles>().Text()))),
+    t => t.Column().Head("邮箱").Data(x => x.Email),
+    t => t.Column().Head("可用").Data(x => x.IsEnable.ToString()),
+    t => t.Column().Data(x => Html.ActionLink("编辑", "Edit", "User", new {id = x.Id}, new {data_pjax = ""})).Data("|")
+        .Data(x => Html.ConfirmButton("初始密码", Url.Action("InitPassword", new {id = x.Id}), "初始化后密码将改为123456,确定初始化吗"))
+        .Data("|")
+        .Data(x => x.IsEnable ? Html.ConfirmButton("禁用", Url.Action("EditAble", new {id = x.Id}), "禁用后此账号将不能登录，你确认禁用吗")
+            : Html.ConfirmButton("启用", Url.Action("EditAble", new {id = x.Id}), "启用后此账号将能登录，你确认启用吗"))
+        .Data("|")
+        .Data(x => Html.ConfirmButton("注销", Url.Action("Delete", new {id = x.Id}), "删除后将不能找回，你确认删除吗")))
+  
+@Html.Partial("PageHelper", Model.PageInfo)

@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5432E518-204E-431A-90E9-81A8C6F7F082}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DormitoryManagement</RootNamespace>
+    <AssemblyName>DormitoryManagement</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\MyFramework\package\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <HintPath>..\MyFramework\package\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\MyFramework\package\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\MyFramework\package\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqSpecs">
+      <HintPath>..\MyFramework\package\LinqSpecs.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\MyFramework\package\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MyFramework\package\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Z.EntityFramework.Extensions">
+      <HintPath>..\MyFramework\package\Z.EntityFramework.Extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Application\IAcademyCommand.cs" />
+    <Compile Include="Application\IAdminService.cs" />
+    <Compile Include="Application\ICheckCommand.cs" />
+    <Compile Include="Application\IClassCommand.cs" />
+    <Compile Include="Application\IDormCommand.cs" />
+    <Compile Include="Application\IGroupService.cs" />
+    <Compile Include="Application\IInspectionCommand.cs" />
+    <Compile Include="Application\IMemberCommand.cs" />
+    <Compile Include="Application\IMemberService.cs" />
+    <Compile Include="Application\IMinisterService.cs" />
+    <Compile Include="Application\Imp\AcademyCommand.cs" />
+    <Compile Include="Application\Imp\AdminService.cs" />
+    <Compile Include="Application\Imp\CheckCommand.cs" />
+    <Compile Include="Application\Imp\ClassCommand.cs" />
+    <Compile Include="Application\Imp\DormCommand.cs" />
+    <Compile Include="Application\Imp\GroupService.cs" />
+    <Compile Include="Application\Imp\InspectionCommand.cs" />
+    <Compile Include="Application\Imp\MemberCommand.cs" />
+    <Compile Include="Application\Imp\MemberService.cs" />
+    <Compile Include="Application\Imp\MinisterService.cs" />
+    <Compile Include="Application\Imp\RoomCommand.cs" />
+    <Compile Include="Application\Imp\StudentCommand.cs" />
+    <Compile Include="Application\IRoomCommand.cs" />
+    <Compile Include="Application\IStudentCommand.cs" />
+    <Compile Include="Domain\Academy.cs" />
+    <Compile Include="Domain\Academy.Specification.cs" />
+    <Compile Include="Domain\Check.cs" />
+    <Compile Include="Domain\Check.Specification.cs" />
+    <Compile Include="Domain\CheckResult.cs" />
+    <Compile Include="Domain\CheckResult.Specification.cs" />
+    <Compile Include="Domain\DormitoryApplication.cs" />
+    <Compile Include="Domain\Files.cs" />
+    <Compile Include="Domain\InspectionType.cs" />
+    <Compile Include="Domain\Class.cs" />
+    <Compile Include="Domain\Class.Specification.cs" />
+    <Compile Include="Domain\Dorm.cs" />
+    <Compile Include="Domain\Dorm.Specification.cs" />
+    <Compile Include="Domain\DormitoryManagementEntities.cs" />
+    <Compile Include="Domain\Grade.cs" />
+    <Compile Include="Domain\Inspection.cs" />
+    <Compile Include="Domain\Keys.cs" />
+    <Compile Include="Domain\Level.cs" />
+    <Compile Include="Domain\Member.Specification.cs" />
+    <Compile Include="Domain\Member.cs" />
+    <Compile Include="Domain\Position.cs" />
+    <Compile Include="Domain\Roles.cs" />
+    <Compile Include="Domain\Room.cs" />
+    <Compile Include="Domain\Room.Specification.cs" />
+    <Compile Include="Domain\Sex.cs" />
+    <Compile Include="Domain\Student.cs" />
+    <Compile Include="Domain\Student.Specification.cs" />
+    <Compile Include="Helps\ExportCheckHelps.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyFramework\MyFramework.csproj">
+      <Project>{87710BD8-1516-4E6D-BBDA-A03F0F3AB0FD}</Project>
+      <Name>MyFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

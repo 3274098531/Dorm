@@ -1,0 +1,28 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Web
+@model DormitoryManagement.Domain.Student
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Details";
+}
+    
+ 
+<div class="breadcrumb">
+    学生管理/详情  
+</div>
+@using (Html.BeginForm("Create", "Student", FormMethod.Post, new {data_pjax = "", id = FrameworkKeys.FormId}))
+{
+    @Html.InputText("学号", Html.TextBox(Keys.Code, Model.Code, new {disabled = "disabled"}))
+    @Html.InputText("姓名", Html.TextBox(Keys.Name, Model.Name, new {disabled = "disabled"}))
+    @Html.InputText("性别", Html.TextBox(Keys.Sex, Model.Sex, new {disabled = "disabled"}))
+    @Html.InputText("学院", Html.TextBox(Keys.Academy, Model.Class.Academy.Name, new {disabled = "disabled"}))
+    @Html.InputText("班级", Html.TextBox(Keys.Class, Model.Class.Name, new {disabled = "disabled"}))
+    @Html.InputText("宿舍楼", Html.TextBox(Keys.Dorm, Model.Room.Dorm.Name, new {disabled = "disabled"}))
+    @Html.InputText("房间", Html.TextBox(Keys.Room, Model.Room.Name, new {disabled = "disabled"}))
+    @Html.InputText("违纪情况", Html.TextBox(Keys.Discipline, Model.Discipline, new {disabled = "disabled"}))
+    <div class="col-sm-offset-3 col-sm-9">  
+        @Html.Backbutton()
+    </div>
+}

@@ -1,0 +1,46 @@
+﻿反射学习：
+public class People{
+
+}
+ 获取类型:
+  Type type = typeof(People);
+  Type type = new People().GetType();
+  Type type = Type.GetType("Exercise.People");
+
+  创建实例
+   var instance = Activator.CreateInstance(type);
+
+   Assembly.Load(程序集名称及类名).CreateInstance(类型)
+  获取属性：
+  type.GetProperties();
+  foreach (var property in type.GetProperties())
+ { 
+    给属性赋值
+     property.SetValue(instance, 1, null);
+    得到属性的值
+	 property.GetValue(instance,null);
+ }
+
+ 获取方法
+  var method = type.GetMethod("ismatch");
+  type.GetMethods();
+  调用方法
+  method.Invoke(instance,null);
+
+
+
+  Attribute:
+   
+  MemberInfo[] mi = value.GetType().GetMember(value.ToString());
+                if (mi.Length > 0)
+                {
+                    var attr =  GetCustomAttribute(mi[0], typeof(EnumTextAttribute)) as EnumTextAttribute;
+                    if (attr != null)
+                    {
+                        return attr.EnumText;
+                    }
+                }
+                return value.ToString();
+            }
+            return null;
+        }

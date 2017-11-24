@@ -1,0 +1,24 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Web
+@model DormitoryManagement.Domain.Room
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb">
+    房间管理/编辑
+    
+</div> 
+@using (Html.BeginForm("Edit", "Room", FormMethod.Post, new {data_pjax = "", id = FrameworkKeys.FormId}))
+{
+    @Html.HiddenFor(model => model.Id) 
+    @Html.InputText("宿舍", Html.TextBox(Keys.Dorm, Model.Dorm.Name, new {@class = "form-control", disabled = "disabled"}))
+    @Html.InputText("名称", Html.TextBox(Keys.Name, Model.Name, new {@class = "form-control"}))
+    @Html.InputText("最大人数", Html.TextBox(Keys.MaxBedNum, Model.MaxBedNum, new {@class = "form-control"}))
+    @Html.InputText("备注", Html.TextArea(Keys.Remark, Model.Remark, new {@class = "form-control"}))
+
+    @Html.Submit(Html.Button("返回", Url.Action("Index")))
+}

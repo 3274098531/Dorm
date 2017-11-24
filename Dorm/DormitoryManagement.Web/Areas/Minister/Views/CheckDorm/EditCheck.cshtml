@@ -1,0 +1,25 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Helper
+@using MyFramework.Web
+@model DormitoryManagement.Domain.Check
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumb">
+    检查卫生管理/编辑  
+</div>
+
+
+@using (Html.BeginForm("EditCheck", "CheckDorm", FormMethod.Post, new {data_pjax="",id=FrameworkKeys.FormId}))
+{
+    @Html.InputText("检查名称", Html.TextBox(Keys.Inspection, Model.Inspection.Name, new { disabled = "disabled" }))
+    @Html.InputText("宿舍楼", Html.DropDownList(Keys.Dorm, null, "---请选择---"))
+    @Html.InputText("房间", Html.DropDownList(Keys.Room, null, "---请选择---"))
+    @Html.Submit(Html.Button("返回", Url.Action("Index"),ButtonClass.Default))
+} 
+<script type="text/javascript"> 
+    SelectRoomFormDorm(); 
+</script>

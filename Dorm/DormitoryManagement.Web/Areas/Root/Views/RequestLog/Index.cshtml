@@ -1,0 +1,23 @@
+﻿@using MyFramework.Web
+@model IEnumerable<MyFramework.Domain.Log>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+} 
+<ol class="breadcrumb">
+    <li class="active">请求日志管理/日志列表 
+    </li> 
+</ol> 
+<div class="btn-group">
+    @Html.Backbutton() 
+</div>  
+@Html.Table(Model,
+    t => t.AutoIndexColumn().Head("序号"), 
+    t => t.Column().Head("次数").Data(x => x.Index.ToString()),
+    t => t.Column().Head("Url").Data(x => x.Url),
+    t => t.Column().Head("操作时间").Data(x => x.Time.ToString()),
+    t => t.Column().Head("用户名").Data(x => x.UserName),
+    t => t.Column().Head("请求类型").Data(x => x.HttpMethod),
+    t => t.Column().Head("Ip").Data(x => x.UserIp),
+    t => t.Column().Head("参数").Data(x => x.ActionParameters))

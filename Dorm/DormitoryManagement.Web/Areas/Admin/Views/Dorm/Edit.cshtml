@@ -1,0 +1,19 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Helper
+@using MyFramework.Web
+@model DormitoryManagement.Domain.Dorm
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+} 
+<div class="breadcrumb">
+    宿舍楼管理/编辑
+</div> 
+@using (Html.BeginForm("Edit", "Dorm", FormMethod.Post, new {data_pjax = "", id = FrameworkKeys.FormId}))
+{
+    @Html.InputText("名称", Html.TextBox(Keys.Name))
+    @Html.InputText("类型", Html.DropDownList(Keys.Type, null, "----请选择----"))
+    @Html.Submit(Html.Button("返回", Url.Action("Index")))
+}

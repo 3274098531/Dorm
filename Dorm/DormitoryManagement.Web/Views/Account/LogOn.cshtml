@@ -1,0 +1,44 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+
+@{
+    ViewBag.Title = "登录";
+    Layout = "~/Views/Shared/_Logout.cshtml";
+}
+@using (Html.BeginForm("LogOn", "Account", FormMethod.Post, new {id = "login_form"}))
+{
+    <div class="top_b">湖南文理学院宿舍管理</div>
+    if (ViewData.ContainsKey(Keys.Notification))
+    {
+        <div class="alert alert-danger" id="LogOn-Notification">
+            @ViewData[Keys.Notification]
+        </div>
+    }
+    <div class="cnt_b">
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon input-sm">
+                    <i class="glyphicon glyphicon-user"></i>
+                </span>
+                @Html.TextBox(FrameworkKeys.UserName, "", new {placeholder = "请输入用户名", @class = "form-control input-sm"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon input-sm">
+                    <i class="glyphicon glyphicon-lock"></i>
+                </span>
+                @Html.Password(FrameworkKeys.Password, "", new {placeholder = "请输入密码", @class = "form-control input-sm"})
+            </div>
+        </div>
+    </div>
+    <div class="btm_b clearfix">
+        <span class="link_reg ">
+            @Html.ActionLink("注册新用户", "Register")
+            @Html.ActionLink("找回密码", "FindPassWord")
+        </span>
+        <button class="btn btn-primary pull-right" type="submit" id="logon-button">
+            登 录</button> 
+                       
+    </div>
+}

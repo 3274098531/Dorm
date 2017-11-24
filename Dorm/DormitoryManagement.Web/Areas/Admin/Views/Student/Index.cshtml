@@ -1,0 +1,57 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Helper
+@using MyFramework.Web
+@model MyFramework.Web.Page.PageList<DormitoryManagement.Domain.Student>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+<div class="breadcrumb">
+    学生管理/学生列表 
+</div>  @Html.Model("search",Url.Action("Index"),"查询",
+    Html.InputText("学号", Html.TextBox(Keys.Code)),
+    Html.InputText("姓名", Html.TextBox(Keys.Name)),
+    Html.InputText("班级名称", Html.TextBox(Keys.ClassName)),
+    Html.InputText("学院名称", Html.TextBox(Keys.AcademyName)),
+    Html.InputText("宿舍名称", Html.TextBox("DormName")) )
+<div class=" sepH_b">
+    <div class=" col-sm-6">
+        @Html.Backbutton()
+        @Html.CreateButton(Url.Action("Create")) 
+        @Html.File("批量导入", Url.Action("InputFile"))
+        @Html.ModelButton("复杂查询","search")
+    </div> 
+    @using (Html.BeginForm("Index", "Student", new {area = "Admin"}, FormMethod.Post, new {data_pjax = ""}))
+    {
+        @Html.Search(Keys.NameOrCode, "请输入学生姓名或学号")
+    }
+</div>
+ 
+@Html.Table(Model,
+    t => t.AutoIndexColumn().Head("序号"),
+    t => t.Column().Head("学号").Data(x => x.Code),
+    t => t.Column().Head("姓名").Data(x => x.Name),
+    t => t.Column().Head("性别").Data(x => x.Sex.Text()),
+    t => t.Column().Head("学院").Data(x => x.Class.Academy.Name),
+    t => t.Column().Head("班级").Data(x => x.Class.Name),
+    t => t.Column().Head("宿舍").Data(x => x.Room.Dorm.Name + x.Room.Name),
+    t => t.Column().Head("是否违纪").Data(x => x.Discipline),
+    t => t.Column().Head("操作").Data(x => Html.Button("编辑", Url.Action("Edit", "Student", new {id = x.Id}))).Data("|")
+        .Data(x => Html.Button("详情", Url.Action("Details", "Student", new {id = x.Id}))).Data("|")
+        .Data(x => Html.ConfirmButton("删除", Url.Action("Delete", "Student", new {id = x.Id}),"删除后将不能找回，你确认删除吗")))
+   
+@Html.Partial("PageHelper", Model.PageInfo)
+<script>
+   
+    $(function() {
+        $('#DeleteAll').click(function() {
+            var code = prompt('这主要是年级更新操作,请输入您要删除的年级(2015)，删除后七所属班级也会删除删除后将不能恢复，谨慎操作');
+            if (code != null && code != "") {
+
+                window.location.href = "/Admin/Student/DeleteAll?code=" + code;
+            } 
+        });
+    });
+</script>

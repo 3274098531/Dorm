@@ -1,0 +1,42 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Web
+@using MyFramework.Web.HtmlTags
+@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumb">
+    检查卫生管理/添加 
+</div> 
+@using (Html.BeginForm("Create", "CheckDorm", FormMethod.Post, new {data_pjax = "", id = FrameworkKeys.FormId}))
+{
+    
+    @Html.InputText("名称", Html.TextBox(Keys.Name))
+    @Html.InputText("检查时间", Html.TextBox(Keys.CheckTime), "glyphicon glyphicon-calendar form-control-feedback")
+    @Html.InputText("比例", Html.TextBox(Keys.Ratio))
+    @Html.InputText("检查类型", Html.DropDownList(Keys.InspectionType, null, "---请选择---"))
+    @Html.Submit(Html.Button("返回", Url.Action("Index")))
+}
+ 
+<script type="text/javascript">
+    $('#@Keys.CheckTime').datetimepicker({ lang: 'ch' });
+    $('form input[type="submit"]').click(function() {
+        $.ajax({
+            beforeSend: function () {
+                var xval = getBusyOverlay('viewport', { color: 'gray', opacity: 0.75, text: 'viewport: loading...', style: 'text-shadow: 0 0 3px black;font-weight:bold;font-size:16px;color:white' }, { color: '#ff0', size: 256, type: 'o' });
+                if (xval) {
+                    xval.settext("正在随机添加检查的寝室，请稍后......");
+                }
+            }
+        });
+    });
+</script>
+@Html.FormValidate(FrameworkKeys.FormId,
+    Rule.Tag(Keys.Code).required(),
+    Rule.Tag(Keys.Name).required(),
+    Rule.Tag(Keys.CheckTime).required(),
+    Rule.Tag(Keys.Ratio).required(),
+    Rule.Tag(Keys.InspectionType).required())

@@ -1,0 +1,55 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Web
+@{
+    Layout = null;
+    ViewBag.Title = "Index";
+}
+<link href=@Url.Content("~/Content/bootstrap/css/bootstrap.min.css")  rel="stylesheet">
+@if (ViewData.ContainsKey(Keys.Message))
+{
+    @Html.Alert(ViewData[Keys.Message].ToString(), "", AlertCategory.Success)
+}
+@using (Html.BeginForm("Clear", "Default", FormMethod.Post))
+{
+    <button type="submit">清空数据</button>
+}
+ 
+@using (Html.BeginForm("InitData", "Default", FormMethod.Post))
+{
+    <button type="submit">初始数据</button>
+}
+@using (Html.BeginForm("InitTest", "Default", FormMethod.Post))
+{
+    <button type="submit">初始测试数据</button>
+}
+@Html.ActionLink("登入页面", "LogOn", "Account")
+@using (Html.BeginForm("LogOn", "Account"))
+{
+    @Html.Hidden(FrameworkKeys.UserName, "admin")
+    @Html.Hidden(FrameworkKeys.Password, "liuwei")
+    <button type="submit">管理员登录</button>
+}
+@using (Html.BeginForm("LogOn", "Account"))
+{
+    @Html.Hidden(FrameworkKeys.UserName, "201501020139")
+    @Html.Hidden(FrameworkKeys.Password, "123456")
+    <button type="submit"  >部长登录</button>
+}
+@using (Html.BeginForm("LogOn", "Account"))
+{
+    @Html.Hidden(FrameworkKeys.UserName, "201517020106")
+    @Html.Hidden(FrameworkKeys.Password, "123456")
+    <button type="submit" >部员登录</button>
+}
+@using (Html.BeginForm("LogOn", "Account"))
+{
+    @Html.Hidden(FrameworkKeys.UserName, "201517010235")
+    @Html.Hidden(FrameworkKeys.Password, "123456")
+    <button type="submit"  >小组登录</button>
+}@using (Html.BeginForm("LogOn", "Account"))
+{
+    @Html.Hidden(FrameworkKeys.UserName, "201501030211")
+    @Html.Hidden(FrameworkKeys.Password, "123456")
+    <button type="submit"  >寝室长登录</button>
+}

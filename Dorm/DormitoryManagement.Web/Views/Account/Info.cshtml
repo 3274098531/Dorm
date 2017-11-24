@@ -1,0 +1,62 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Helper.StringDecrypt
+@using MyFramework.Web
+@using MyFramework.Web.HtmlTags
+@model MyFramework.Domain.Account
+
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+} 
+@if (ViewData.ContainsKey(Keys.Message))
+{
+    @Html.Alert(ViewData[Keys.Message].ToString(), "", AlertCategory.Success)
+}
+<ol class="breadcrumb">
+    <li class="active">个人信息管理/编辑</li>
+     
+</ol> 
+  
+@using (Html.BeginForm("EditPhoto", "Account", FormMethod.Post, new {  enctype = "multipart/form-data", id = FrameworkKeys.FormId, name = "EditPhoto"}))
+{
+    @Html.InputText("照片", Html.Image("myimage", Url.Action("GetPhoto", new {username = Model.UserName})))
+    <div class="col-sm-offset-3 col-sm-9">
+        <input type="file" name="file" id="file"  style="display: none" /> 
+        <button type="button" class="btn btn-default" onclick=" document.getElementById('file').click(); ">修改头像</button>
+    </div>
+} 
+ 
+@using (Html.BeginForm("Info", "Account", FormMethod.Post, new {data_pjax = "", id = FrameworkKeys.FormId}))
+{
+       
+    @Html.Hidden(FrameworkKeys.OldPassWord, Model.PassWord)
+    @Html.InputText("用户名", Html.TextBox(FrameworkKeys.UserName, Model.UserName, new {disabled = "disabled"}))
+    @Html.InputText("真实姓名", Html.TextBox(FrameworkKeys.RealName, Model.RealName))
+    @Html.InputText("密码", Html.Password(FrameworkKeys.Password, Model.PassWord.ToDecode(), new {@class = "form-control"}))
+    @Html.InputText("确认密码", Html.Password(FrameworkKeys.ConfirmPassWord, Model.PassWord.ToDecode(), new {@class = "form-control"}))
+    @Html.InputText("邮箱", Html.TextBox(FrameworkKeys.Email, Model.Email))
+    @Html.Submit()
+}
+ 
+ 
+@Html.FormValidate(FrameworkKeys.FormId,
+    Rule.Tag(FrameworkKeys.Password).required(),
+    Rule.Tag(FrameworkKeys.ConfirmPassWord).required().equalTo(FrameworkKeys.Password, "密码不一致"),
+    Rule.Tag(FrameworkKeys.Email).required().email())
+<script type="text/javascript"> 
+    $(function() { 
+        var $passworddiv = $('div[name="确认密码"]');
+        $passworddiv.hide();
+        $("#@FrameworkKeys.Password").change(function() {
+            if ($(this).val() != $('#@FrameworkKeys.OldPassWord').val()) {
+                $passworddiv.show();
+                $('#@FrameworkKeys.ConfirmPassWord').val("");
+            }
+        });
+    });
+
+    $('input[type=file]').change(function() {
+        $('form[name="EditPhoto"]').submit();
+    });
+</script>

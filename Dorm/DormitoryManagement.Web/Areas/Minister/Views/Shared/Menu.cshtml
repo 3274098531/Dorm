@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+     
+<aside  class="sidebar" id="menu">
+         
+    @Html.ActionLink("主页", "Index", "Home", null, new {@class = "list-group-item active glyphicon glyphicon-home"}) 
+    @Html.ActionLink("学院管理", "Index", "Academy", null, new {@class = "list-group-item  "})
+    @Html.ActionLink("班级管理", "Index", "Class", null, new {@class = "list-group-item  "})
+    
+    @Html.ActionLink("宿舍(楼)管理", "Index", "Dorm", null, new {@class = "list-group-item  "}) 
+    @Html.ActionLink("宿舍(房)管理", "Index", "Room", null, new {@class = "list-group-item  "}) 
+    @Html.ActionLink("学生管理", "Index", "Student", null, new {@class = "list-group-item  "}) 
+     
+    @Html.ActionLink("成员管理", "Index", "Member", null, new {@class = "list-group-item  "}) 
+    @Html.ActionLink("卫生抽查", "Index", "CheckDorm", null, new {@class = "list-group-item  "})  
+</aside> 
+ <div class="dislpayArrow hidden-xs">
+    <a class="pngfix" href="javascript:void(0);" onclick=" displaynavbar(this) "></a>
+</div>
+<section class="content">
+    @RenderBody() 
+</section>

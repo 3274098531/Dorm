@@ -1,0 +1,24 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Domain
+@using MyFramework.Web
+@model DormitoryManagement.Domain.Inspection
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumb">
+    检查卫生管理/添加 
+</div> 
+@using (Html.BeginForm("Edit", "CheckDorm", FormMethod.Post, new {data_pjax = "", id = FrameworkKeys.FormId}))
+{ 
+    @Html.InputText("名称", Html.TextBox(Keys.Name, Model.Name))
+    @Html.InputText("检查时间", Html.TextBox(Keys.CheckTime, Model.CheckTime), "glyphicon glyphicon-calendar form-control-feedback")
+    @Html.InputText("比例", Html.TextBox(Keys.Ratio, Model.Ratio))
+    @Html.InputText("检查类型", Html.DropDownList(Keys.InspectionType, null, Model.Type))
+    @Html.Submit(Html.Button("返回", Url.Action("Index")))
+}
+ 
+<script type="text/javascript">
+    $('#@Keys.CheckTime').datetimepicker({ lang: 'ch' });
+</script>

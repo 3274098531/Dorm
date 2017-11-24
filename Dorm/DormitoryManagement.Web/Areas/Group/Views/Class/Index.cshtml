@@ -1,0 +1,35 @@
+﻿@using DormitoryManagement.Domain
+@using MyFramework.Web
+@model MyFramework.Web.Page.PageList<DormitoryManagement.Domain.Class>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+}  
+<div class="breadcrumb">
+    班级管理/班级列表     
+</div> 
+@Html.Model("search", Url.Action("Index"), "开始搜索",
+    Html.InputText("名称", Html.TextBox(Keys.Name)),
+    Html.InputText("学院名称", Html.TextBox(Keys.AcademyName)))
+<div class=" sepH_b">
+    <div class=" col-sm-6">
+        @Html.Backbutton() 
+        @Html.ModelButton("复杂查询","search")
+    </div> 
+     @using (Html.BeginForm("Index", "Class", new {Area = "Admin"}, FormMethod.Post, new {data_pjax = ""}))
+    {
+        @Html.Search(Keys.Name, "请输入班级名称")
+    }
+ 
+</div>      
+
+
+ 
+@Html.Table(Model,
+    t => t.AutoIndexColumn().Head("序号"),
+    t => t.Column().Head("名称").Data(x => x.Name),
+    t => t.Column().Head("学院").Data(x => x.Academy.Name),
+    t => t.Column().Head("人数").Data(x => x.Students.Count.ToString()),
+    t => t.Column()
+        .Data(x => Html.PostButton("班级详情", Url.Action("Index", "Student", new {ClassId = x.Id})))) 
+@Html.Partial("PageHelper", Model.PageInfo)
